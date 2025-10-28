@@ -17,6 +17,7 @@ export function UploadWidgetDropzone() {
       "image/png": [],
     },
     onDrop(acceptedFiles) {
+      console.log(acceptedFiles);
       addUploads(acceptedFiles);
     },
   });

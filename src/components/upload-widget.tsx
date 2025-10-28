@@ -11,6 +11,7 @@ export function UploadWidget() {
    return (    
     <Collapsible.Root onOpenChange={() => toggleWidgetOpen()} asChild>
       
+      
       <motion.div
         data-progress={isThereAnyPendingUpload}
         className="bg-zinc-900 overflow-hidden w-[360px] 
@@ -35,6 +36,8 @@ export function UploadWidget() {
         }}
       >
         {!isWidgetOpen && <UploadWidgetMinimizedButton />}
+
+        
 
         <Collapsible.Content>
           <UploadWidgetHeader />
