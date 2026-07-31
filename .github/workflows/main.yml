@@ -6,7 +6,7 @@ on:
       - main
 
 env:
-  AWS_S3_BUCKET: rocketseat-upload-widget-web-static
+  AWS_S3_BUCKET: rocketseat-upload-widget-web-static-thiago-franco-2
   SOURCE_DIST: ./dist
 
 jobs:
