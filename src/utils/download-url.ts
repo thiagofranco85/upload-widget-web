@@ -5,12 +5,7 @@ export const downloadUrl = async (url: string) => {
 
     const link = document.createElement("a");
 
-    const urlObj = new URL(url);
-    const pathname = urlObj.pathname;
-    const segments = pathname
-      .split("/")
-      .filter((segment) => segment.length > 0);
-    const filename = segments.length > 0 ? segments[segments.length - 1] : null;
+    const filename = new URL(url).pathname.split("/").filter(Boolean).pop();
 
     if (!filename) {
       throw new Error("URL does not contain a valid filename");
