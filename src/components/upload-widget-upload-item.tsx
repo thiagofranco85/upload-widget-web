@@ -17,7 +17,7 @@ export function UploadWidgetUploadItem({
   uploadId,
 }: UploadWidgetUploadItemProps) {
   const cancelUpload = useUploads((store) => store.cancelUpload);
-  const processUpload = useUploads((store) => store.processUpload);
+  const retryUpload = useUploads((store) => store.retryUpload);
 
   const progress = Math.min(
     upload.compressedSizeInBytes
@@ -116,7 +116,7 @@ export function UploadWidgetUploadItem({
         <Button
           disabled={!["canceled", "error"].includes(upload.status)}
           size="icon-sm"
-          onClick={() => processUpload(uploadId)}
+          onClick={() => retryUpload(uploadId)}
         >
           <RefreshCcw className="size-4" strokeWidth={1.5} />
           <span className="sr-only">Retry upload</span>

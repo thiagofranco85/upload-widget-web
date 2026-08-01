@@ -2,12 +2,16 @@ interface CircularProgressBarProps {
   progress: number;
   size?: number;
   strokeWidth?: number;
+  circleColor?: string;
+  progressColor?: string;
 }
 
 const CircularProgressBar = ({
   progress,
   size = 120,
   strokeWidth = 8,
+  circleColor = "text-zinc-800",
+  progressColor = "text-indigo-500",
 } : CircularProgressBarProps) => {
   const center = size / 2;
   const radius = center - strokeWidth / 2;
@@ -18,7 +22,7 @@ const CircularProgressBar = ({
     <div className="relative" style={{ width: size, height: size }}>
       <svg className="w-full h-full -rotate-90" viewBox={`0 0 ${size} ${size}`}>
         <circle
-          className="text-zinc-800 stroke-current"
+          className={`${circleColor} stroke-current`}
           strokeWidth={strokeWidth}
           fill="transparent"
           r={radius}
@@ -26,7 +30,7 @@ const CircularProgressBar = ({
           cy={center}
         />
         <circle
-          className="text-indigo-500 stroke-current"
+          className={`${progressColor} stroke-current`}
           strokeWidth={strokeWidth}
           strokeLinecap="round"
           fill="transparent"
