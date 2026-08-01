@@ -21,7 +21,7 @@ type UploadState = {
   uploads: Map<string, Upload>;
   addUploads: (files: File[]) => void;
   cancelUpload: (uploadId: string) => void;
-  retryUpload: (uploadId: string) => void;
+  processUpload: (uploadId: string) => void;
 };
 
 enableMapSet();
@@ -118,10 +118,6 @@ export const useUploads = create<UploadState, [["zustand/immer", never]]>(
       });
     }
 
-    function retryUpload(uploadId: string) {
-      processUpload(uploadId);
-    }
-
     function addUploads(files: File[]) {
       for (const file of files) {
         const uploadId = crypto.randomUUID();
@@ -146,7 +142,7 @@ export const useUploads = create<UploadState, [["zustand/immer", never]]>(
       uploads: new Map(),
       addUploads,
       cancelUpload,
-      retryUpload,
+      processUpload,
     };
   })
 );
