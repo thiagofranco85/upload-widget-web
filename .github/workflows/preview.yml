@@ -1,4 +1,4 @@
-name: Deploy to s3
+name: Preview deploy to Vercel
 
 on:
   push:
@@ -6,9 +6,6 @@ on:
       - main
 
 env:
-  # AWS_S3_BUCKET: rocketseat-upload-widget-web-static-thiago-franco-2
-  # AWS_S3_BUCKET_CDN: rocketseat-upload-widget-web-static-thiago-franco-cdn
-  # SOURCE_DIST: ./dist
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 
@@ -24,7 +21,7 @@ jobs:
         id: configure-node
         uses: actions/setup-node@v4
         with:
-          node-version: 24
+          node-version: 20
 
       - name: Install pnpm
         id: install-pnpm
@@ -45,9 +42,9 @@ jobs:
       - name: Build app
         id: build-app
         run: |
-          vercel build --preview --token=${{ secrets.VERCEL_TOKEN }}
+          vercel build --token=${{ secrets.VERCEL_TOKEN }}
       
       - name: Deploy app
         id: deploy-app
         run: |
-          vercel deploy --prebuilt --preview --token=${{ secrets.VERCEL_TOKEN }}
+          vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
