@@ -1,5 +1,7 @@
 import axios from "axios";
 
+const apiUrl = import.meta.env.VITE_API_URL ?? "http://localhost:3333";
+
 interface UploadFileToStorageParams {
   file: File;
   onProgress: (sizeInBytes: number) => void;
@@ -18,7 +20,7 @@ export async function uploadFileToStorage(
   data.append("file", file);
 
   const response = await axios.post<{ url: string }>(
-    "http://localhost:3333/uploads",
+    `${apiUrl}/uploads`,
     data,
     {
       headers: {
